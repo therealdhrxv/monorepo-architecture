@@ -1,13 +1,18 @@
 import { Signup } from "ui";
+import axios from "axios";
 
 const SignupPage = () => {
   return (
     <div>
       <Signup
-        onClick={function (email: string, password: string): void {
-          // throw new Error("Function not implemented.");
-          alert(`Signup with ${email} and ${password}`)
-        }}
+        onClick={
+          async (username, password) => {
+            const response = await axios.post("/api/signup", {
+              username,
+              password,
+            });
+          }
+        }
       />
     </div>
   );
