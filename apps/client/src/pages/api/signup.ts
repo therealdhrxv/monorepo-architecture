@@ -25,7 +25,6 @@ export default async function handler(
       const obj = { username: username, password: password };
       const newAdmin = new Admin(obj);
       newAdmin.save();
-
       const token = jwt.sign({ username, role: 'admin' }, SECRET, { expiresIn: '1h' });
       res.json({ message: 'Admin created successfully', token });
   }
