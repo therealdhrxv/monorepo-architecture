@@ -7,10 +7,11 @@ const SignupPage = () => {
       <Signup
         onClick={
           async (username, password) => {
-            const response = await axios.post("/api/signup", {
+            const response = await axios.post("/api/auth/signup", {
               username,
               password,
             });
+            localStorage.setItem("token", response.data.token);
           }
         }
       />
